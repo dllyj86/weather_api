@@ -2,6 +2,7 @@ package com.weather.api.weather_api.current;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -23,6 +24,7 @@ public class CurrentWeatherController {
 
 	final Logger currentCtrlLogger = LogManager.getLogger();
 
+	@Autowired()
 	private CurrentWeatherService service;
 
 	@GetMapping("/weather/current")

@@ -3,6 +3,8 @@ package com.weather.api.weather_api.common.workflow;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.weather.api.weather_api.common.workflow.task.Task;
 
 /**
@@ -39,10 +41,9 @@ public class WorkflowScheduler {
 
 		if (workflow != null) {
 			for (Task task : workflow) {
-				boolean taskStatus = task.run(workflowInputData, workflowOutputData);
+				status = task.run(workflowInputData, workflowOutputData);
 				// If task status is false, break workflow and return false.
-				if (!taskStatus) {
-					status = taskStatus;
+				if (!status) {
 					break;
 				}
 			}
@@ -53,4 +54,14 @@ public class WorkflowScheduler {
 
 		return status;
 	}
+
+	public Map<String, List<Task>> getWorkflowStore() {
+		return workflowStore;
+	}
+
+	public void setWorkflowStore(Map<String, List<Task>> workflowStore) {
+		this.workflowStore = workflowStore;
+	}
+	
+	
 }

@@ -3,6 +3,9 @@ package com.weather.api.weather_api.current.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.weather.api.weather_api.common.constant.Constants;
 import com.weather.api.weather_api.common.workflow.WorkflowScheduler;
 import com.weather.api.weather_api.current.model.CurrentWeatherModel;
@@ -13,9 +16,11 @@ import com.weather.api.weather_api.current.model.CurrentWeatherModel;
  * @author Liuyuanjun
  *
  */
+@Component()
 public class CurrentWeatherService {
 
-	private WorkflowScheduler scheduler;
+	@Autowired()
+	private WorkflowScheduler workflowScheduler;
 
 	/**
 	 * Query current weather for city.
@@ -32,8 +37,8 @@ public class CurrentWeatherService {
 
 		final Map<String, Object> workflowOutputData = new HashMap<String, Object>();
 
-		boolean status = scheduler.runWorkflow(Constants.WORKFLOW_QUERY_CURRENT_WEATHER_FOR_CITY, workflowInputData,
-				workflowOutputData);
+		boolean status = this.workflowScheduler.runWorkflow(Constants.WORKFLOW_QUERY_CURRENT_WEATHER_FOR_CITY,
+				workflowInputData, workflowOutputData);
 
 		if (!status) {
 			throw new Exception("Query current weather for city did not get valid data.");

@@ -1,25 +1,44 @@
 package com.weather.api.weather_api.common.client;
 
 import java.io.IOException;
-import java.util.Map;
 
 import org.apache.http.Consts;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * Http client to call weather api.
  * @author Liuyuanjun
  *
  */
+@Component()
 public class WeatherApiClient {
 	
+	@Value("${weather.api.connection.request.timeout}")
+	private int CONNECTION_REQUEST_TIMEOUT;
+	
+	@Value("${weather.api.connect.timeout}")
+	private int CONNECT_TIMEOUT;
+	
+	private static int SUCCESS_STATUS_CODE = 200;
+	
 	private HttpClient httpClient;
+	
+	final Logger weatherApiClientLogger = LogManager.getLogger();
 	
 	public WeatherApiClient() {
 		this.httpClient = HttpClients.createDefault();
@@ -31,19 +50,42 @@ public class WeatherApiClient {
 	 * @param path
 	 * @param paramsMap
 	 * @return
-	 * @throws IOException
+	 * @throws IOException 
+	 * @throws ClientProtocolException 
+	 * @throws HttpFailedStatusException 
+	 * @throws JSONException 
+	 * @throws Exception 
 	 */
-	public HttpResponse doGet(String url) throws IOException {
+	public JSONObject doGet(String url) throws ClientProtocolException, IOException, HttpFailedStatusException, JSONException {
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectionRequestTimeout(10000)
-                .setConnectTimeout(5000)
+                .setConnectionRequestTimeout(CONNECTION_REQUEST_TIMEOUT)
+                .setConnectTimeout(CONNECT_TIMEOUT)
                 .build();
+        
         HttpGet httpGet = new HttpGet(url);
         httpGet.setConfig(requestConfig);
         httpGet.setHeader(HTTP.CONTENT_TYPE,ContentType.create(ContentType.APPLICATION_FORM_URLENCODED
                 .getMimeType(),Consts.UTF_8).toString());
 
-        return this.httpClient.execute(httpGet);
+        JSONObject body = null;
+        
+		HttpResponse response = this.httpClient.execute(httpGet);
+		HttpEntity entity = response.getEntity();
+		
+		final int statusCode = response.getStatusLine().getStatusCode();
+		if( SUCCESS_STATUS_CODE != statusCode) {
+			EntityUtils.consume(entity);
+        	throw new HttpFailedStatusException("Request weather API failed. Status code: " + statusCode);
+        }
+		
+		String bodyStr = EntityUtils.toString(entity);
+        EntityUtils.consume(entity);
+        
+        this.weatherApiClientLogger.debug("Response body: " + bodyStr);
+        
+        body = new JSONObject(bodyStr);
+        
+        return body;
     }
 	
 	public HttpClient getApiClient() {
