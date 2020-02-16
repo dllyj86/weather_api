@@ -1,5 +1,6 @@
 package com.weather.api.weather_api.common.util;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +19,7 @@ public class WeatherDataUtils {
 	 * @return	formatted updated time
 	 */
 	public static String getLocalUpdatedTime(final String timezoneId, final String localTime,
-			final Locale localLanguage, final String targetFormat) {
+			final Locale localLanguage, final String targetFormat) throws DateTimeException {
 
 		LocalDateTime.now(ZoneId.of(timezoneId));
 		// Get LocalDataTime for String updated time

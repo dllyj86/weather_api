@@ -36,7 +36,9 @@ public class CallingApiService extends Task {
 		
 		final String url = this.getRequestUrl(weatherApiHost, currentWeatherPath, queryParamMap);
 		
-		final JSONObject body = this.apiClient.doGet(url);
+		final String bodyStr = this.apiClient.doGet(url);
+		
+		JSONObject body = new JSONObject(bodyStr);
 		
 		workflowOutputData.put(Constants.CURRENT_WEATHER_FOR_CITY_RESPONSE_BODY, body);
 		

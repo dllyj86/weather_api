@@ -12,12 +12,8 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class CityListService {
+public class CityListServiceTest {
 
-	/**
-	 * City list comes from workflow-config.xml
-	 * If you want to add new city, please edit the xml.
-	 */
 	@Autowired()
 	@Qualifier("cityNameList")
 	private List<String> cityList;

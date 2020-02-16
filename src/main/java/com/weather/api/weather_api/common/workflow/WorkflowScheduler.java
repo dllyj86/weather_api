@@ -3,8 +3,6 @@ package com.weather.api.weather_api.common.workflow;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
-
 import com.weather.api.weather_api.common.workflow.task.Task;
 
 /**
@@ -21,7 +19,7 @@ public class WorkflowScheduler {
 	 * 
 	 * command pattern
 	 */
-	Map<String, List<Task>> workflowStore;
+	private Map<String, List<Task>> workflowStore;
 	
 	/**
 	 * Run a workflow
