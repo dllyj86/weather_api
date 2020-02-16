@@ -1,5 +1,7 @@
 package com.weather.api.weather_api.current;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.weather.api.weather_api.common.service.CityListService;
 import com.weather.api.weather_api.current.model.CurrentWeatherModel;
 import com.weather.api.weather_api.current.service.CurrentWeatherService;
 
@@ -26,6 +29,9 @@ public class CurrentWeatherController {
 
 	@Autowired()
 	private CurrentWeatherService service;
+	
+	@Autowired()
+	private CityListService cityListService;
 
 	@GetMapping("/weather/current")
 	public ResponseEntity<?> currentWeather(@RequestParam(value = "city") String city) {
@@ -57,4 +63,15 @@ public class CurrentWeatherController {
 
 		return response;
 	}
+	
+	@GetMapping("/weather/citylist")
+	public ResponseEntity<?> currentWeather() {
+
+		final List<String> cityNameList = this.cityListService.getCityNameList();
+		
+		ResponseEntity<List<String>> response = new ResponseEntity<List<String>>(cityNameList, HttpStatus.OK);;
+		
+		return response;
+	}
+	
 }

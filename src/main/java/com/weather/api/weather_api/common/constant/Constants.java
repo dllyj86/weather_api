@@ -36,4 +36,32 @@ public class Constants {
 	
 	public static String CURRENT_WEATHER_FOR_CITY_RESPONSE_BODY = "CURRENT_WEATHER_FOR_CITY_RESPONSE_BODY";
 	
+	// Constants for weather response start
+	public static final String SOURCE_UPDATED_TIME_FORMAT = "yyyy-MM-dd HH:mm";
+	
+	public static final String CURRENT_PART_KEY = "current";
+
+	public static final String TARGET_UPDATED_TIME_FORMAT = "EEEE hh:mm a";
+	
+	public static final String LOCATION_PART_KEY = "location";
+	
+	public static final String NAME_PROP_KEY = "location";
+	
+	public static final String TIMEZONE_ID_PROP_KEY = "location";
+	
+	public static final String LOCALTIME_PROP_KEY = "location";
+	
+	public static final String WEATHER_CODE_PROP_KEY = "location";
+
+	public static final String TEMPERATURE_PROP_KEY = "location";
+	
+	public static final String WIND_SPEED_PROP_KEY = "wind_speed";
+	
+	public static final String KM_PER_HOUR_LABEL = "km/h";
+	
+	public static final String CELSIUS_SYMBOY_UNICODE_NUMBER = "2103";
+	
+	public static final int PARSE_INTEGER_RADIX = 16;
+	// end
+	
 }

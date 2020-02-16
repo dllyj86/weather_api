@@ -27,4 +27,11 @@
 
 	<bean id="callingApiService"
 		class="com.weather.api.weather_api.common.service.CallingApiService"></bean>
+	
+	<!-- Definition of city name list which will be shown in UI dropdown -->
+	<util:list id="cityNameList">
+		<value>Sydney</value>
+		<value>Melbourne</value>
+		<value>Wollongong</value>
+	</util:list>
 </beans>
