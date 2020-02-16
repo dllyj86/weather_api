@@ -45,15 +45,15 @@ public class Constants {
 	
 	public static final String LOCATION_PART_KEY = "location";
 	
-	public static final String NAME_PROP_KEY = "location";
+	public static final String NAME_PROP_KEY = "name";
 	
-	public static final String TIMEZONE_ID_PROP_KEY = "location";
+	public static final String TIMEZONE_ID_PROP_KEY = "timezone_id";
 	
-	public static final String LOCALTIME_PROP_KEY = "location";
+	public static final String LOCALTIME_PROP_KEY = "localtime";
 	
-	public static final String WEATHER_CODE_PROP_KEY = "location";
+	public static final String WEATHER_CODE_PROP_KEY = "weather_code";
 
-	public static final String TEMPERATURE_PROP_KEY = "location";
+	public static final String TEMPERATURE_PROP_KEY = "temperature";
 	
 	public static final String WIND_SPEED_PROP_KEY = "wind_speed";
 	

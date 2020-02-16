@@ -33,9 +33,11 @@ public class CurrentWeatherController {
 	@Autowired()
 	private CityListService cityListService;
 
-	@GetMapping("/weather/current")
+	@GetMapping("/api/weather/current")
 	public ResponseEntity<?> currentWeather(@RequestParam(value = "city") String city) {
 
+		this.currentCtrlLogger.info("==========\n Got request with path /api/weather/current . city value is " + city);
+		
 		ResponseEntity<?> response = null;
 
 		// Check request parameter
@@ -61,16 +63,20 @@ public class CurrentWeatherController {
 			}
 		}
 
+		this.currentCtrlLogger.info("==========\\n Return response for path /api/weather/current");
 		return response;
 	}
 	
-	@GetMapping("/weather/citylist")
+	@GetMapping("/api/weather/citylist")
 	public ResponseEntity<?> currentWeather() {
 
+		this.currentCtrlLogger.info("==========\\n Got request with path /api/weather/citylist");
+		
 		final List<String> cityNameList = this.cityListService.getCityNameList();
 		
 		ResponseEntity<List<String>> response = new ResponseEntity<List<String>>(cityNameList, HttpStatus.OK);;
 		
+		this.currentCtrlLogger.info("==========\\n Return response for path /api/weather/citylist");
 		return response;
 	}
 	

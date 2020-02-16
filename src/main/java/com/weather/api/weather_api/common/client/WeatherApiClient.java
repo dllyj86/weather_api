@@ -69,7 +69,12 @@ public class WeatherApiClient {
 
         JSONObject body = null;
         
+        this.weatherApiClientLogger.info("==========\n Start to call API。 URL is " + url);
+        
 		HttpResponse response = this.httpClient.execute(httpGet);
+		
+		this.weatherApiClientLogger.info("==========\n Got response form API");
+		
 		HttpEntity entity = response.getEntity();
 		
 		final int statusCode = response.getStatusLine().getStatusCode();
