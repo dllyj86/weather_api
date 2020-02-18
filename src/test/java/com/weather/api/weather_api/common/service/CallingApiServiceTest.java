@@ -3,21 +3,19 @@ package com.weather.api.weather_api.common.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.weather.api.weather_api.BasicTest;
 import com.weather.api.weather_api.common.client.WeatherApiClient;
 import com.weather.api.weather_api.common.constant.Constants;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 public class CallingApiServiceTest extends BasicTest {
 	
 	@Mock

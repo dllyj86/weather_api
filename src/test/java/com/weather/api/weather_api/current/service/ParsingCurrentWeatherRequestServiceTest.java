@@ -1,10 +1,10 @@
 package com.weather.api.weather_api.current.service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.weather.api.weather_api.BasicTest;
 import com.weather.api.weather_api.common.constant.Constants;
@@ -17,6 +17,7 @@ import com.weather.api.weather_api.common.constant.Constants;
  * @author Liuyuanjun
  *
  */
+@SpringBootTest
 public class ParsingCurrentWeatherRequestServiceTest extends BasicTest  {
 
 	@Test

@@ -3,7 +3,8 @@ package com.weather.api.weather_api.common.util;
 import java.util.Map;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 
 /**
@@ -12,6 +13,7 @@ import org.junit.Test;
  * @author Liuyuanjun
  *
  */
+@SpringBootTest
 public class ConditionCodesXmlLoaderTest {
 
 	@Test

@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.weather.api.weather_api.BasicTest;
@@ -18,6 +19,7 @@ import com.weather.api.weather_api.common.workflow.task.Task;
  * @author Liuyuanjun
  *
  */
+@SpringBootTest
 public class WorkflowSchedulerTest extends BasicTest {
 	
 	
@@ -53,17 +55,20 @@ public class WorkflowSchedulerTest extends BasicTest {
 		Assert.assertTrue(!status);
 	}
 	
-	@Test(expected = Exception.class)
-	public void testExceptoinFlow() throws Exception {
+	@Test
+	public void testExceptoinFlow() {
 		
-		Map<String, Object> taskMap = this.getDataMap();
-		List<Task> taskList = new ArrayList<Task>();
-		taskList.add(new ExceptionTaskForTest());
-		taskMap.put("fail", taskList);
-		
-		ReflectionTestUtils.setField(scheduler, "workflowStore", taskMap);
-		
-		final boolean status = scheduler.runWorkflow("fail", null, null);
+		try {
+			Map<String, Object> taskMap = this.getDataMap();
+			List<Task> taskList = new ArrayList<Task>();
+			taskList.add(new ExceptionTaskForTest());
+			taskMap.put("fail", taskList);
+			
+			ReflectionTestUtils.setField(scheduler, "workflowStore", taskMap);
+			final boolean status = scheduler.runWorkflow("fail", null, null);
+		} catch (Exception e) {
+			Assert.assertNotNull(e);
+		}
 		
 	}
 

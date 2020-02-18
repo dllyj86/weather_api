@@ -1,12 +1,11 @@
 package com.weather.api.weather_api.current.service;
 
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.weather.api.weather_api.BasicTest;
 import com.weather.api.weather_api.common.workflow.WorkflowScheduler;
@@ -18,7 +17,7 @@ import com.weather.api.weather_api.current.model.CurrentWeatherModel;
  * @author Liuyuanjun
  *
  */
-@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest
 public class CurrentWeatherServiceTest extends BasicTest {
 
 	@InjectMocks
@@ -49,13 +48,17 @@ public class CurrentWeatherServiceTest extends BasicTest {
 	 * 
 	 * @throws Exception
 	 */
-	@Test(expected = Exception.class)
-	public void testQueryCurrentWeatherForCityFailed() throws Exception {
+	@Test
+	public void testQueryCurrentWeatherForCityFailed() {
 
-		Mockito.when(workflowScheduler.runWorkflow(Mockito.anyString(), Mockito.anyMap(), Mockito.anyMap()))
-				.thenReturn(false);
-		
-		CurrentWeatherModel model = service.queryCurrentWeatherForCity("Sydney");
+		try {
+			Mockito.when(workflowScheduler.runWorkflow(Mockito.anyString(), Mockito.anyMap(), Mockito.anyMap()))
+					.thenReturn(false);
+
+			CurrentWeatherModel model = service.queryCurrentWeatherForCity("Sydney");
+		} catch (Exception e) {
+			Assert.assertNotNull(e);
+		}
 
 	}
 

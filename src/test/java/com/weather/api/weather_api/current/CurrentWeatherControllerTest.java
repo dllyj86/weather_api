@@ -22,7 +22,6 @@ import com.weather.api.weather_api.current.service.CurrentWeatherService;
  * @author Liuyuanjun
  *
  */
-@RestController
 public class CurrentWeatherControllerTest {
 
 	final Logger currentCtrlLogger = LogManager.getLogger();

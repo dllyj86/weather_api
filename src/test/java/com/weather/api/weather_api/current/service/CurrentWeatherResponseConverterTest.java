@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.json.JSONObject;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.weather.api.weather_api.BasicTest;
 import com.weather.api.weather_api.common.constant.Constants;
