@@ -1,6 +1,5 @@
 package com.weather.api.weather_api.common.util;
 
-import java.time.DateTimeException;
 import java.util.Locale;
 
 import org.junit.Assert;

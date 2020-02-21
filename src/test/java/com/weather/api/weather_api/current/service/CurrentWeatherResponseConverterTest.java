@@ -6,6 +6,7 @@ import java.util.Map;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.weather.api.weather_api.BasicTest;
 import com.weather.api.weather_api.common.constant.Constants;
@@ -18,6 +19,7 @@ import com.weather.api.weather_api.current.model.CurrentWeatherModel;
  * @author Liuyuanjun
  *
  */
+@SpringBootTest
 public class CurrentWeatherResponseConverterTest {
 
 	@Test

@@ -29,10 +29,10 @@ public class CallingApiServiceTest extends BasicTest {
 		
 		Mockito.when(apiClient.doGet("http://api.weatherstack.com/current?query=Sydney&access_key=208727fd8af3b34c1febf14e7ff52faa")).thenReturn(BasicTest.mockJson);
 		
-		Map input = this.getDataMap();
-		Map output = this.getDataMap();
+		Map<String, Object> input = this.getDataMap();
+		Map<String, Object> output = this.getDataMap();
 		
-		Map param = this.getDataMap();
+		Map<String, Object> param = this.getDataMap();
 		param.put("query", "Sydney");
 		input.put(Constants.QUERY_INPUT_DATA_KEY, param);
 		

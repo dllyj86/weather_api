@@ -24,13 +24,13 @@ public class ParsingCurrentWeatherRequestServiceTest extends BasicTest  {
 	public void testParsingLogic() {
 		
 		ParsingCurrentWeatherRequestService service = new ParsingCurrentWeatherRequestService();
-		Map input = this.getDataMap();
+		Map<String, Object> input = this.getDataMap();
 		input.put(Constants.UI_INPUT_DATA_KEY, "Sydney");
-		Map output = this.getDataMap();
+		Map<String, Object> output = this.getDataMap();
 		final boolean status = service.run(input, output);
 		Assert.assertTrue(status);
 		
-		Map param = (Map) input.get(Constants.QUERY_INPUT_DATA_KEY);
+		Map<String, Object> param = (Map<String, Object>) input.get(Constants.QUERY_INPUT_DATA_KEY);
 		final String city = (String) param.get(Constants.API_PARAM_KEY_CITY);
 		Assert.assertEquals(city, "Sydney");
 	}
