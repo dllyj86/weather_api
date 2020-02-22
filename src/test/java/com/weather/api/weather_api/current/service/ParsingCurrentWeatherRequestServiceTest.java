@@ -17,7 +17,6 @@ import com.weather.api.weather_api.common.constant.Constants;
  * @author Liuyuanjun
  *
  */
-@SpringBootTest
 public class ParsingCurrentWeatherRequestServiceTest extends BasicTest  {
 
 	@Test

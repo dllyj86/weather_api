@@ -4,11 +4,9 @@ import java.util.Locale;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.weather.api.weather_api.common.constant.Constants;
 
-@SpringBootTest
 public class WeatherDataUtilsTest {
 
 	@Test

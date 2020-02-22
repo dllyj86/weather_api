@@ -17,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.weather.api.weather_api.common.service.CityListService;
-import com.weather.api.weather_api.common.workflow.WorkflowScheduler;
 import com.weather.api.weather_api.current.model.CurrentWeatherModel;
 import com.weather.api.weather_api.current.service.CurrentWeatherService;
 

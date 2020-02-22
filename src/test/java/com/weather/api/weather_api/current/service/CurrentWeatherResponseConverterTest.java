@@ -19,7 +19,6 @@ import com.weather.api.weather_api.current.model.CurrentWeatherModel;
  * @author Liuyuanjun
  *
  */
-@SpringBootTest
 public class CurrentWeatherResponseConverterTest {
 
 	@Test

@@ -12,6 +12,7 @@
 	<groupId>com.weather.api</groupId>
 	<artifactId>weather_api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>weather_api</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -113,6 +114,17 @@
 				</executions>
 			</plugin>
 		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+						<include>application.properties</include>
+						<include>weather-condition-codes.xml</include>
+						<include>workflow-config.xml</include>
+					</includes>
+			</resource>
+		</resources>
 	</build>
 
 </project>

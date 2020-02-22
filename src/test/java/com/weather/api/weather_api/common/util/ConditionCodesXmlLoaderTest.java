@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 
 /**
@@ -13,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author Liuyuanjun
  *
  */
-@SpringBootTest
 public class ConditionCodesXmlLoaderTest {
 
 	@Test
@@ -24,4 +22,7 @@ public class ConditionCodesXmlLoaderTest {
 		Assert.assertNotNull(codeMap);
 		Assert.assertTrue(!codeMap.entrySet().isEmpty());
 	}
+	
 }
+
+

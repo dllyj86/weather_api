@@ -21,7 +21,6 @@ import com.weather.api.weather_api.BasicTest;
  * @author Liuyuanjun
  *
  */
-@SpringBootTest
 public class WeatherApiClientTest extends BasicTest {
 
 	WeatherApiClient client = new WeatherApiClient();

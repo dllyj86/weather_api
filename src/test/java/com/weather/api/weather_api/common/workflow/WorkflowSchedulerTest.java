@@ -19,7 +19,6 @@ import com.weather.api.weather_api.common.workflow.task.Task;
  * @author Liuyuanjun
  *
  */
-@SpringBootTest
 public class WorkflowSchedulerTest extends BasicTest {
 	
 	
