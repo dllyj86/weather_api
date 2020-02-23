@@ -1,0 +1,19 @@
+@startuml
+
+autonumber
+
+actor User
+
+User -> CurrentWeatherController: query city weather by city name
+
+CurrentWeatherController -> CityListService: request city list
+
+CityListService --> CurrentWeatherController: return city name list
+note right 
+	<b>List<String> cityList</b> property is injected with <b>cityNameList</b> bean 
+	in <b>workflow-config.xml</b>
+end note
+
+CurrentWeatherController --> User: return city name list
+
+@enduml

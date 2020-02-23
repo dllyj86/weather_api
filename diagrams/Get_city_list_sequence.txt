@@ -1,0 +1,44 @@
+@startuml
+
+autonumber
+
+actor User
+
+User -> CurrentWeatherController: query city weather by city name
+
+CurrentWeatherController -> CurrentWeatherService: request weather for a city
+
+CurrentWeatherService -> WorkflowScheduler: call runWorkflow() to run tasks
+
+WorkflowScheduler -> ParsingCurrentWeatherRequestService: call run() to get city name \nfrom request parameter
+
+ParsingCurrentWeatherRequestService -> WorkflowScheduler: put city name in workflowInputData
+
+WorkflowScheduler -> CallingApiService: call <b>run()</b> to call API
+
+CallingApiService -> WeatherApiClient: call API with http client
+
+WeatherApiClient --> CallingApiService: return API weather data
+
+CallingApiService --> WorkflowScheduler: put API weather data \nin <b>workflowOutputData</b>
+
+WorkflowScheduler -> CurrentWeatherResponseConverter: call <b>run()</b> to convert API \nweather data to model
+
+CurrentWeatherResponseConverter -> ConditionCodesXmlLoader: get weather condition codes
+
+ConditionCodesXmlLoader -> ConditionCodesXmlLoader: load condition codes map from \n<b>weather-condition-codes.xml</b>
+note right: if condition map is null \nthen load the file and keep the data in map
+
+ConditionCodesXmlLoader --> CurrentWeatherResponseConverter: return weather condition codes
+
+CurrentWeatherResponseConverter --> WorkflowScheduler: return weather data model
+
+WorkflowScheduler -> CurrentWeatherService: return success status
+
+CurrentWeatherService -> CurrentWeatherService: get weather data model \nfrom <b>workflowOutputMap</b>
+
+CurrentWeatherService -> CurrentWeatherController: return weather model to controller
+
+CurrentWeatherController -> User: return weather model to user
+
+@enduml
