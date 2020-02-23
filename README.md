@@ -12,7 +12,7 @@ URL: <https://github.com/dllyj86/weather_api>
 [Jenkins](http://52.76.30.89:8080/job/weather_api_cicd/)  
 URL: <http://52.76.30.89:8080/job/weather_api_cicd/>
 
-If you want to visit my Jenkins, please use user name `visitor` and password `12345678`.
+If you want to visit my Jenkins, please check user name and password in email.
 
 **Notice:**  
 If you want to run the build, please inform me in advance. I need to change my EC2 from t2.micro to a larger type or the Jenkins will crash.
