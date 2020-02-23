@@ -120,7 +120,7 @@ It keeps the configuration of workflow and tasks. It also keeps the city name li
 
 ### scripts folder
 
-It keeps scripts that are run by AWS CodeDeploy. They are stop.sh, clean.sh, startup.sh.
+It keeps scripts (clean, stop, startup) that are run by AWS CodeDeploy.
 
 local_maven_build_and_run.bat and sh are for building and running the application in local.
 
@@ -148,3 +148,20 @@ It is configuration of AWS CodeDeploy.
 ![screenshot 1](https://jimmy-demo-static-files.s3-ap-southeast-1.amazonaws.com/api+3.PNG)
 
 ![screenshot 2](https://jimmy-demo-static-files.s3-ap-southeast-1.amazonaws.com/api+4.PNG)
+
+## Reusable and extenable
+
+1. WorkflowScheduler and tasks make the application reusable.  
+When you want to implement new process, you just need to create new tasks for specific logic. If there is existing task that meets your sepecific requirement, you can reuse it in your workflow. The tasks make up new workflow that helps you to complete your process.  
+
+    For example:  
+    You want to query the air quality for Sydney. You can reuse below existing tasks:  
+
+    ParsingCurrentWeatherRequestService  
+    CallingApiService  
+
+    You only need to create one new task:  
+
+    CurrentAirQualityConverter (it gets air quality from API response and put it in model)
+
+2. If you want to add new city to the dropdown, you only need to add the new city name in workflow-config.xml. It's very convenient.
