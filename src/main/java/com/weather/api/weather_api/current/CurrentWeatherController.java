@@ -68,7 +68,7 @@ public class CurrentWeatherController {
 	}
 	
 	@GetMapping("/api/weather/citylist")
-	public ResponseEntity<?> currentWeather() {
+	public ResponseEntity<?> cityList() {
 
 		this.currentCtrlLogger.info("==========\\n Got request with path /api/weather/citylist");
 		
